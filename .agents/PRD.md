@@ -15,7 +15,7 @@ Project ini membangun solusi komputasi biologi untuk mengestimasi distribusi fas
 
 Alur utama project:
 
-1. mencari dan mendokumentasikan dataset flow cytometry publik;
+1. memakai dan mendokumentasikan dataset flow cytometry publik Zenodo 14928071 sebagai dataset utama;
 2. membuat notebook Python end-to-end untuk preprocessing, fitting model, visualisasi, dan analisis;
 3. membuat backend FastAPI yang menjalankan fitting model secara reusable;
 4. membuat React virtual lab untuk memilih dataset/demo, mengirim data ke backend, dan menampilkan hasil model;
@@ -40,7 +40,7 @@ Tujuan project:
 
 Success criteria:
 
-- notebook dapat dijalankan dari awal sampai akhir pada dataset publik atau fallback demo;
+- notebook dapat dijalankan dari awal sampai akhir pada dataset publik Zenodo 14928071;
 - model menghasilkan estimasi G1, S, dan G2/M yang ternormalisasi dan dapat dijelaskan;
 - backend menyediakan endpoint fitting yang stabil;
 - frontend menampilkan histogram, kurva fit, residual, proporsi fase, dan warning;
@@ -78,8 +78,7 @@ Pengguna virtual lab:
 
 ### In Scope
 
-- pencarian dataset publik flow cytometry yang relevan dengan DNA content/cell cycle;
-- fallback dataset sintetis atau CSV histogram kecil untuk demo;
+- penggunaan dataset publik Zenodo 14928071 yang relevan dengan DNA content/cell cycle;
 - preprocessing FCS/histogram menjadi bins dan counts;
 - implementasi fitting Dean-Jett-Fox dalam Python;
 - notebook analisis lengkap;
@@ -103,17 +102,17 @@ Pengguna virtual lab:
 
 Sistem/project harus:
 
-- mencari dataset FCS publik atau histogram DNA publik dari sumber seperti FlowRepository atau GEO;
+- memakai dataset FCS publik Zenodo 14928071 sebagai dataset utama;
 - mencatat sumber, accession id, URL, tanggal akses, deskripsi sampel, dan lisensi/ketersediaan;
-- memilih minimal satu dataset utama atau menyatakan fallback bila dataset publik tidak feasible;
-- menyediakan fallback sintetis/CSV kecil yang cukup untuk menjalankan notebook dan demo.
+- mencatat FlowRepository FR-FCM-ZZMY sebagai dataset sekunder/cadangan karena download file mentah membutuhkan login;
+- menyediakan script downloader Zenodo tanpa login dan preprocessing histogram `PI-A`.
 
 ### 7.2 Notebook Python
 
 Notebook harus:
 
 - menjelaskan konteks biologis dan tujuan analisis;
-- membaca dataset publik atau fallback demo;
+- membaca dataset publik Zenodo 14928071;
 - melakukan preprocessing ke histogram DNA;
 - menjalankan fitting model Dean-Jett-Fox;
 - menghitung proporsi G1, S, dan G2/M;
@@ -194,11 +193,11 @@ Response:
 {
   "datasets": [
     {
-      "id": "demo-synthetic-001",
-      "name": "Synthetic DNA Histogram Demo",
-      "source_type": "synthetic_fallback",
-      "description": "Histogram demo untuk validasi pipeline dan virtual lab.",
-      "has_raw_fcs": false,
+      "id": "zenodo-14928071-ai-0",
+      "name": "Zenodo 14928071 AI 0h PI-A",
+      "source_type": "zenodo_fcs_processed",
+      "description": "Histogram PI-A hasil preprocessing FCS Zenodo 14928071.",
+      "has_raw_fcs": true,
       "has_processed_histogram": true
     }
   ]
@@ -211,7 +210,7 @@ Request dengan dataset id:
 
 ```json
 {
-  "dataset_id": "demo-synthetic-001",
+  "dataset_id": "zenodo-14928071-ai-0",
   "initial_parameters": {
     "g1_mean": null,
     "g2_mean": null
@@ -238,7 +237,7 @@ Response:
 
 ```json
 {
-  "fit_id": "demo-synthetic-001-default",
+  "fit_id": "zenodo-14928071-ai-0-default",
   "phase_percentages": {
     "g1": 55.2,
     "s": 26.4,
@@ -276,7 +275,7 @@ Response:
 - Proporsi fase harus dinormalisasi sehingga total mendekati 100%.
 - `g2_mean` harus lebih besar dari `g1_mean`.
 - Warning harus diberikan bila puncak tidak jelas, fit buruk, atau parameter berada di batas constraint.
-- Semua hasil harus reproducible dengan seed tetap untuk fallback sintetis.
+- Semua hasil harus reproducible dari raw FCS Zenodo atau histogram processed yang dibuat dari script preprocessing.
 
 ## 10. UX Requirements
 
@@ -303,8 +302,8 @@ Virtual lab harus terasa seperti alat eksplorasi akademik:
 Project dianggap memenuhi MVP bila:
 
 - `.agents/rules.md`, `.agents/PRD.md`, dan `.agents/implementationPhase.md` tersedia dan konsisten;
-- notebook utama dapat dijalankan pada fallback dataset;
-- minimal satu sumber dataset publik telah dicatat, meski tidak semua data mentah masuk Git;
+- notebook utama dapat dijalankan pada dataset Zenodo 14928071;
+- sumber dataset publik Zenodo 14928071 telah dicatat, termasuk DOI, file prioritas, manifest download, dan channel kandidat;
 - model fitting mengembalikan G1, S, G2/M, metrik fit, dan residual;
 - backend API dapat menjalankan `/health`, `/datasets`, dan `/fit`;
 - frontend React dapat memuat dataset demo dan menampilkan hasil fitting;
@@ -315,7 +314,7 @@ Project dianggap memenuhi MVP bila:
 
 | Risk | Impact | Mitigasi |
 | --- | --- | --- |
-| Dataset publik sulit diakses atau tidak sesuai | Analisis data nyata tertunda | Gunakan fallback sintetis untuk demo dan tetap dokumentasikan pencarian dataset |
+| Dataset publik sulit diakses atau tidak sesuai | Analisis data nyata tertunda | Gunakan metadata dan manifest Zenodo untuk re-download; FlowRepository FR-FCM-ZZMY hanya cadangan karena butuh login |
 | FCS channel DNA tidak jelas | Histogram tidak valid | Catat channel assumptions dan gunakan dataset/histogram alternatif |
 | Model fit buruk pada data noisy | Interpretasi lemah | Tampilkan residual, warning, dan caveat |
 | Scope backend/frontend terlalu besar | Deadline terancam | Prioritaskan notebook dan API `/fit` minimal, frontend hanya visualisasi inti |
@@ -327,5 +326,6 @@ Project dianggap memenuhi MVP bila:
 - Brainstorming topik siklus sel dan Dean-Jett-Fox di `.agents/Brainstorming JUDUL KDS.pdf`.
 - Dean PN, Jett JH. Mathematical analysis of DNA distributions derived from flow microfluorometry.
 - Fox MH. A model for the computer analysis of synchronous DNA distributions.
-- FlowRepository dan GEO/NCBI sebagai kandidat sumber dataset publik.
+- Zenodo 14928071 sebagai dataset utama.
+- FlowRepository FR-FCM-ZZMY sebagai dataset sekunder/cadangan karena download file mentah membutuhkan login.
 - FlowCal dan FlowKit sebagai kandidat library Python untuk membaca/menangani FCS.

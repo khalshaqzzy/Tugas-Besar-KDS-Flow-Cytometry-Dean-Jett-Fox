@@ -19,7 +19,8 @@ Repo saat dokumen ini dibuat masih berupa scaffold awal:
 Keputusan yang sudah dikunci:
 
 - Bahasa dokumen utama adalah Indonesia.
-- Dataset target adalah FCS publik/histogram DNA publik dengan fallback sintetis/CSV kecil.
+- Dataset utama adalah Zenodo 14928071, yaitu FCS publik yang dapat diunduh tanpa login.
+- FlowRepository FR-FCM-ZZMY hanya dataset sekunder/cadangan karena download file mentah membutuhkan login.
 - Notebook Python adalah artefak ilmiah utama.
 - Backend adalah Python FastAPI.
 - Frontend adalah Vite React TypeScript.
@@ -51,38 +52,40 @@ Validation:
 - PRD menyebut kode Python, laporan maksimal 6 halaman, dan video maksimal 10 menit;
 - implementationPhase menyebut semua fase dari dataset sampai final packaging.
 
-### Phase 1 - Dataset Search, Provenance, dan Fallback
+### Phase 1 - Dataset Zenodo, Provenance, dan Validasi Raw FCS
 
-Status: pending.
+Status: completed.
 
 Tujuan:
 
-- menemukan kandidat dataset flow cytometry DNA content/cell cycle;
+- menetapkan Zenodo 14928071 sebagai dataset utama flow cytometry DNA content/cell cycle;
 - mendokumentasikan provenance dataset;
-- membuat fallback histogram sintetis/CSV kecil agar pipeline selalu runnable.
+- mengunduh file FCS prioritas tanpa login dan memverifikasi file mentah.
 
 Deliverables:
 
-- `data/metadata/dataset_sources.md` atau JSON metadata setara;
-- raw dataset bila ukurannya wajar, atau instruksi download bila besar;
-- fallback dataset di `data/processed/` atau `data/raw/demo/`;
-- script/notebook cell untuk generate fallback dengan seed tetap.
+- `data/metadata/dataset_sources.md`;
+- raw FCS Zenodo di `data/raw/zenodo/14928071/`;
+- manifest download di `data/metadata/zenodo_14928071_download_manifest.json`;
+- metadata FCS di `data/metadata/zenodo_14928071_fcs_metadata.*`;
+- script downloader `scripts/download_zenodo_14928071.py`.
 
 Implementation notes:
 
-- Prioritaskan FlowRepository dan GEO/NCBI.
-- Bila memakai FCS, identifikasi channel DNA/fluorescence yang dipakai untuk histogram.
-- Bila dataset publik tidak feasible sebelum deadline, catat alasan dan pakai fallback untuk demo.
+- Gunakan Zenodo 14928071 sebagai dataset utama.
+- FlowRepository FR-FCM-ZZMY tidak diunduh dan hanya dicatat sebagai cadangan karena membutuhkan login untuk raw file.
+- Channel DNA/fluorescence kandidat dari metadata FCS adalah `PI-A`; `PI-H` dan `PI-W` tersedia sebagai informasi pendukung.
+- Jalur data cadangan lokal tidak digunakan karena file FCS Zenodo valid.
 
 Validation:
 
-- minimal satu kandidat dataset publik tercatat dengan URL/accession;
-- fallback dapat dibaca Python tanpa akses internet;
-- metadata membedakan data nyata dan sintetis.
+- dataset Zenodo 14928071 tercatat dengan URL record, DOI, API metadata, dan daftar file prioritas;
+- delapan file FCS prioritas berhasil diunduh dan lolos validasi ukuran minimal, header `FCS3.0`, dan checksum MD5;
+- metadata membedakan Zenodo sebagai dataset utama dan FlowRepository FR-FCM-ZZMY sebagai cadangan.
 
 ### Phase 2 - Notebook Eksplorasi dan Preprocessing
 
-Status: pending.
+Status: completed.
 
 Tujuan:
 
@@ -98,13 +101,13 @@ Deliverables:
 
 Implementation notes:
 
-- Gunakan FlowCal atau FlowKit bila FCS dipakai dan dependency berhasil.
-- Untuk fallback CSV, gunakan pembacaan pandas/numpy sederhana.
-- Notebook harus bisa run all pada fallback tanpa internet.
+- Gunakan parser FCS lokal untuk metadata dan preprocessing awal Zenodo bila FlowCal/FlowKit belum dipasang.
+- Gunakan channel `PI-A` sebagai channel DNA/PI utama berdasarkan metadata FCS.
+- Notebook harus bisa run all pada file Zenodo yang sudah diunduh.
 
 Validation:
 
-- notebook run all berhasil pada fallback;
+- notebook run all berhasil pada histogram Zenodo `PI-A`;
 - histogram tidak kosong, counts non-negatif, dan bins masuk akal;
 - grafik histogram dapat dipakai untuk diskusi awal.
 
@@ -122,7 +125,7 @@ Deliverables:
 - module Python model reusable di `models/` atau package backend;
 - fungsi utama semacam `fit_dean_jett_fox(bins, counts, initial_parameters=None)`;
 - output phase percentages, parameters, metrics, series, warnings;
-- unit test untuk fallback dataset.
+- unit test untuk histogram processed Zenodo.
 
 Implementation notes:
 
@@ -135,7 +138,7 @@ Validation:
 
 - proporsi G1 + S + G2/M mendekati 100%;
 - parameter inti non-negatif;
-- fit pada fallback menghasilkan output deterministik;
+- fit pada histogram Zenodo menghasilkan output deterministik;
 - warning muncul untuk input invalid atau fit buruk.
 
 ### Phase 4 - Backend FastAPI
@@ -151,7 +154,7 @@ Deliverables:
 - `app/backend/` dengan FastAPI app;
 - endpoint `GET /health`, `GET /datasets`, `POST /fit`;
 - schema request/response menggunakan Pydantic;
-- loader dataset processed/fallback;
+- loader dataset processed Zenodo;
 - test API minimal.
 
 Implementation notes:
@@ -220,7 +223,7 @@ Implementation notes:
 
 - Jangan mengklaim ground truth bila dataset tidak menyediakan label fase.
 - Bandingkan output terhadap ekspektasi biologis umum 2N/4N.
-- Jelaskan fallback sintetis bila dipakai.
+- Jelaskan caveat dataset Zenodo, channel `PI-A`, gating, dan residual fit.
 
 Validation:
 
@@ -254,7 +257,7 @@ Struktur wajib:
 Validation:
 
 - maksimal 6 halaman;
-- menyebut dataset dan fallback secara jujur;
+- menyebut dataset Zenodo dan keterbatasannya secara jujur;
 - semua gambar/tabel punya caption;
 - link kode dapat diakses evaluator.
 
@@ -295,16 +298,16 @@ Validation:
 Batch pertama setelah dokumen ini:
 
 1. Buat scaffold folder minimal dan README awal.
-2. Cari dataset publik dan buat `data/metadata/dataset_sources.md`.
-3. Buat fallback histogram sintetis kecil dengan seed tetap.
-4. Mulai notebook `notebooks/dean_jett_fox_flow_cytometry.ipynb` yang bisa membaca fallback.
-5. Implementasikan fungsi model paling kecil yang menghasilkan G1/S/G2-M untuk fallback.
+2. Gunakan Zenodo 14928071 sebagai dataset utama dan buat `data/metadata/dataset_sources.md`.
+3. Unduh FCS prioritas dan buat histogram `PI-A` di `data/processed/`.
+4. Mulai notebook `notebooks/dean_jett_fox_flow_cytometry.ipynb` yang membaca histogram Zenodo.
+5. Implementasikan fungsi model paling kecil yang menghasilkan G1/S/G2-M untuk histogram Zenodo.
 
 Alasan urutan ini:
 
 - deadline tugas ketat;
 - notebook dan hasil analisis lebih penting untuk penilaian daripada polish frontend;
-- fallback memastikan demo tidak terblokir dataset eksternal;
+- file Zenodo sudah valid sehingga jalur data cadangan lokal tidak diperlukan pada fase berjalan;
 - model reusable sejak awal mencegah duplikasi antara notebook dan API.
 
 ## 4. Validation Matrix
@@ -312,9 +315,9 @@ Alasan urutan ini:
 | Area | Minimum check | Expected result |
 | --- | --- | --- |
 | Docs | Cari referensi project template lama di `.agents/` | Tidak ada |
-| Dataset | Baca fallback CSV/JSON | Bins/counts valid |
-| Notebook | Run all fallback | Selesai tanpa internet |
-| Model | Fit fallback | Proporsi total sekitar 100% |
+| Dataset | Baca histogram Zenodo `PI-A` | Bins/counts valid |
+| Notebook | Run all histogram Zenodo | Selesai setelah file Zenodo tersedia lokal |
+| Model | Fit histogram Zenodo | Proporsi total sekitar 100% |
 | Backend | `GET /health` | Status ok |
 | Backend | `POST /fit` demo | Response sesuai PRD |
 | Frontend | Load virtual lab | Chart dan fase tampil |
@@ -323,7 +326,7 @@ Alasan urutan ini:
 
 ## 5. Open Risks
 
-- Dataset publik yang benar-benar cocok dengan DNA content cell cycle mungkin butuh pencarian manual.
+- Dataset utama Zenodo valid, tetapi channel `PI-A` tetap perlu dinilai dari histogram dan residual fit.
 - Library FCS dapat memerlukan dependency tambahan dan mungkin lambat di Windows.
 - Model Dean-Jett-Fox perlu disederhanakan agar feasible dalam deadline.
 - Frontend live fitting bergantung pada backend berjalan lokal.
@@ -339,5 +342,5 @@ Project final dianggap selesai bila:
 - API dan virtual lab demo berjalan lokal;
 - laporan ilmiah selesai maksimal 6 halaman;
 - video presentasi selesai maksimal 10 menit;
-- semua sumber dataset dan fallback terdokumentasi;
+- semua sumber dataset dan keterbatasannya terdokumentasi;
 - keterbatasan model dan dataset ditulis eksplisit.

@@ -124,17 +124,18 @@ Jika repo belum memiliki layout ini, buat secara bertahap sesuai fase implementa
 
 ## 5. Dataset Rules
 
-Target utama adalah dataset flow cytometry publik dalam format FCS atau data histogram DNA yang dapat dilacak.
+Target utama adalah dataset flow cytometry publik dalam format FCS atau data histogram DNA yang dapat dilacak. Untuk fase berjalan, dataset utama adalah Zenodo 14928071.
 
 Rules:
 
-- Prioritaskan dataset publik dari FlowRepository atau GEO/NCBI yang relevan dengan DNA content/cell cycle.
+- Gunakan Zenodo 14928071 sebagai dataset utama project.
+- Turunkan FlowRepository FR-FCM-ZZMY menjadi dataset sekunder/cadangan karena download file mentah membutuhkan login.
+- Jangan mengunduh file FlowRepository pada fase berjalan.
 - Catat setiap sumber dataset di `data/metadata/` dengan accession id, URL, tanggal akses, deskripsi sampel, channel yang dipakai, dan alasan pemilihan.
 - Raw FCS atau raw CSV tidak boleh diedit langsung; semua transformasi harus menghasilkan file baru di `data/processed/`.
 - Data berukuran besar tidak wajib masuk Git. Jika tidak masuk Git, metadata dan instruksi re-download wajib cukup jelas.
-- Fallback sintetis/histogram CSV kecil boleh digunakan untuk demo dan validasi pipeline bila dataset publik tidak tersedia tepat waktu.
-- Fallback sintetis harus ditandai jelas sebagai fallback, bukan data eksperimental nyata.
-- Laporan wajib menyebutkan apakah hasil utama memakai dataset publik nyata, fallback sintetis, atau kombinasi keduanya.
+- Jalur data cadangan lokal tidak digunakan pada fase berjalan karena file FCS Zenodo valid dan dapat diunduh tanpa login.
+- Laporan wajib menyebutkan hasil utama memakai dataset publik nyata dari Zenodo 14928071.
 
 ## 6. Model Dean-Jett-Fox Rules
 
@@ -188,12 +189,12 @@ Notebook adalah artefak ilmiah utama untuk penilaian kode Python.
 
 Rules:
 
-- Notebook harus dapat dijalankan end-to-end dari dataset/fallback ke tabel dan visualisasi final.
+- Notebook harus dapat dijalankan end-to-end dari dataset Zenodo ke tabel dan visualisasi final.
 - Notebook harus menjelaskan langkah dataset discovery, preprocessing, histogram generation, fitting, evaluasi, dan interpretasi biologis.
 - Notebook harus menghasilkan grafik yang dapat dipakai di laporan dan video.
 - Notebook harus memanggil shared model code bila implementasi reusable sudah tersedia.
 - Notebook tidak boleh menyimpan secret, token, atau credential.
-- Jika memakai dataset besar yang tidak masuk Git, notebook harus tetap runnable dengan fallback demo.
+- Jika raw dataset besar tidak masuk Git, notebook harus menjelaskan cara menjalankan downloader Zenodo untuk membuat ulang data lokal.
 
 ## 10. Documentation Rules
 
@@ -242,7 +243,7 @@ Saat menulis `.agents/`:
 - tulis untuk future Codex sessions dan kontributor project;
 - pisahkan fakta tugas, keputusan project, dan asumsi implementasi;
 - jangan menyisipkan klaim ilmiah yang belum dibuktikan oleh notebook;
-- jangan menyebut fallback sintetis sebagai dataset nyata;
+- jangan menambahkan data buatan kecuali user meminta eksplisit;
 - catat caveat dan keterbatasan model secara eksplisit;
 - gunakan Bahasa Indonesia sebagai bahasa utama dokumen;
 - istilah teknis Inggris boleh dipakai bila lebih presisi.
@@ -256,7 +257,7 @@ Jangan re-decide keputusan ini tanpa memperbarui `.agents/PRD.md` dan `.agents/i
 - Bahasa utama dokumen adalah Indonesia.
 - Target luaran mengikuti tugas IF3211: kode Python, laporan ilmiah maksimal 6 halaman, dan video presentasi maksimal 10 menit.
 - Notebook Python lengkap adalah artefak ilmiah utama.
-- Dataset target adalah FCS publik atau histogram DNA publik, dengan fallback sintetis/CSV kecil untuk demo.
+- Dataset utama adalah FCS publik Zenodo 14928071.
 - Backend adalah Python FastAPI.
 - Frontend adalah React TypeScript berbasis Vite.
 - Model fitting berjalan di backend Python; frontend tidak menjadi implementasi utama model.
