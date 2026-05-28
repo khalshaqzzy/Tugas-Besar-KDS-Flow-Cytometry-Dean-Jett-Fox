@@ -2,6 +2,14 @@
 
 Project IF3211 untuk estimasi distribusi fase siklus sel dari data flow cytometry menggunakan model Dean-Jett-Fox.
 
+## Setup
+
+Install dependency Python:
+
+```powershell
+python -m pip install -r requirements.txt
+```
+
 ## Dataset Utama
 
 Dataset utama adalah Zenodo 14928071:
@@ -13,7 +21,7 @@ Dataset utama adalah Zenodo 14928071:
 
 FlowRepository FR-FCM-ZZMY hanya dicatat sebagai dataset sekunder/cadangan karena download raw file membutuhkan login.
 
-## Phase 1-2
+## Phase 1-3
 
 Jalankan dari root repo:
 
@@ -23,15 +31,31 @@ python scripts\inspect_fcs_metadata.py
 python scripts\preprocess_zenodo_histograms.py
 ```
 
-Notebook eksplorasi:
+Notebook analisis:
 
 ```text
 notebooks/dean_jett_fox_flow_cytometry.ipynb
 ```
 
-Output fase 1-2 tersimpan di:
+Model reusable:
+
+```python
+from models.dean_jett_fox import fit_dean_jett_fox
+```
+
+Model default adalah `djf_polynomial_broadened_v2`: G1 dan G2/M sebagai Gaussian berbasis area, S phase sebagai polynomial orde dua dengan broadening, serta komponen debris/background sederhana.
+
+Validasi:
+
+```powershell
+pytest
+```
+
+Output fase 1-3 tersimpan di:
 
 - `data/metadata/dataset_sources.md`
 - `data/raw/zenodo/14928071/`
 - `data/processed/zenodo_14928071_histograms/`
 - `data/processed/zenodo_14928071_djf_fit_summary.csv`
+- `models/dean_jett_fox.py`
+- `tests/test_dean_jett_fox.py`
