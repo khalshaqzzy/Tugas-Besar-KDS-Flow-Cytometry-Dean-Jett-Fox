@@ -1,0 +1,1154 @@
+[
+  {
+    "file": "Specimen_001_AI_0_001.fcs",
+    "path": "data/raw/zenodo/14928071/Specimen_001_AI_0_001.fcs",
+    "header": {
+      "version": "FCS3.0",
+      "text_start": 256,
+      "text_end": 2357,
+      "data_start": 2363,
+      "data_end": 2833710,
+      "analysis_start": 0,
+      "analysis_end": 0
+    },
+    "events": "0000000000000054449",
+    "cytometer": "FACSymphonyA1",
+    "date": "17-APR-2023",
+    "parameters": [
+      {
+        "index": 1,
+        "name": "FSC-A",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 2
+      },
+      {
+        "index": 2,
+        "name": "FSC-H",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      },
+      {
+        "index": 3,
+        "name": "FSC-W",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      },
+      {
+        "index": 4,
+        "name": "SSC-A",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 2
+      },
+      {
+        "index": 5,
+        "name": "SSC-H",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      },
+      {
+        "index": 6,
+        "name": "SSC-W",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      },
+      {
+        "index": 7,
+        "name": "PI-A",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 10
+      },
+      {
+        "index": 8,
+        "name": "PI-H",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 8
+      },
+      {
+        "index": 9,
+        "name": "PI-W",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 8
+      },
+      {
+        "index": 10,
+        "name": "Alexa Fluor 488-A",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 2
+      },
+      {
+        "index": 11,
+        "name": "Alexa Fluor 488-H",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      },
+      {
+        "index": 12,
+        "name": "Alexa Fluor 488-W",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      },
+      {
+        "index": 13,
+        "name": "Time",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      }
+    ],
+    "best_candidate": {
+      "index": 7,
+      "name": "PI-A",
+      "stain": "",
+      "bit_width": "32",
+      "range": "262144",
+      "amplifier": "0,0",
+      "candidate_score": 10
+    }
+  },
+  {
+    "file": "Specimen_001_AI_24_002.fcs",
+    "path": "data/raw/zenodo/14928071/Specimen_001_AI_24_002.fcs",
+    "header": {
+      "version": "FCS3.0",
+      "text_start": 256,
+      "text_end": 2358,
+      "data_start": 2364,
+      "data_end": 2832827,
+      "analysis_start": 0,
+      "analysis_end": 0
+    },
+    "events": "0000000000000054432",
+    "cytometer": "FACSymphonyA1",
+    "date": "17-APR-2023",
+    "parameters": [
+      {
+        "index": 1,
+        "name": "FSC-A",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 2
+      },
+      {
+        "index": 2,
+        "name": "FSC-H",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      },
+      {
+        "index": 3,
+        "name": "FSC-W",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      },
+      {
+        "index": 4,
+        "name": "SSC-A",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 2
+      },
+      {
+        "index": 5,
+        "name": "SSC-H",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      },
+      {
+        "index": 6,
+        "name": "SSC-W",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      },
+      {
+        "index": 7,
+        "name": "PI-A",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 10
+      },
+      {
+        "index": 8,
+        "name": "PI-H",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 8
+      },
+      {
+        "index": 9,
+        "name": "PI-W",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 8
+      },
+      {
+        "index": 10,
+        "name": "Alexa Fluor 488-A",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 2
+      },
+      {
+        "index": 11,
+        "name": "Alexa Fluor 488-H",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      },
+      {
+        "index": 12,
+        "name": "Alexa Fluor 488-W",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      },
+      {
+        "index": 13,
+        "name": "Time",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      }
+    ],
+    "best_candidate": {
+      "index": 7,
+      "name": "PI-A",
+      "stain": "",
+      "bit_width": "32",
+      "range": "262144",
+      "amplifier": "0,0",
+      "candidate_score": 10
+    }
+  },
+  {
+    "file": "Specimen_001_AI_48_003.fcs",
+    "path": "data/raw/zenodo/14928071/Specimen_001_AI_48_003.fcs",
+    "header": {
+      "version": "FCS3.0",
+      "text_start": 256,
+      "text_end": 2359,
+      "data_start": 2365,
+      "data_end": 3105932,
+      "analysis_start": 0,
+      "analysis_end": 0
+    },
+    "events": "0000000000000059684",
+    "cytometer": "FACSymphonyA1",
+    "date": "17-APR-2023",
+    "parameters": [
+      {
+        "index": 1,
+        "name": "FSC-A",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 2
+      },
+      {
+        "index": 2,
+        "name": "FSC-H",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      },
+      {
+        "index": 3,
+        "name": "FSC-W",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      },
+      {
+        "index": 4,
+        "name": "SSC-A",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 2
+      },
+      {
+        "index": 5,
+        "name": "SSC-H",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      },
+      {
+        "index": 6,
+        "name": "SSC-W",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      },
+      {
+        "index": 7,
+        "name": "PI-A",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 10
+      },
+      {
+        "index": 8,
+        "name": "PI-H",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 8
+      },
+      {
+        "index": 9,
+        "name": "PI-W",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 8
+      },
+      {
+        "index": 10,
+        "name": "Alexa Fluor 488-A",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 2
+      },
+      {
+        "index": 11,
+        "name": "Alexa Fluor 488-H",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      },
+      {
+        "index": 12,
+        "name": "Alexa Fluor 488-W",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      },
+      {
+        "index": 13,
+        "name": "Time",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      }
+    ],
+    "best_candidate": {
+      "index": 7,
+      "name": "PI-A",
+      "stain": "",
+      "bit_width": "32",
+      "range": "262144",
+      "amplifier": "0,0",
+      "candidate_score": 10
+    }
+  },
+  {
+    "file": "Specimen_001_AI_72_004.fcs",
+    "path": "data/raw/zenodo/14928071/Specimen_001_AI_72_004.fcs",
+    "header": {
+      "version": "FCS3.0",
+      "text_start": 256,
+      "text_end": 2360,
+      "data_start": 2366,
+      "data_end": 3554017,
+      "analysis_start": 0,
+      "analysis_end": 0
+    },
+    "events": "0000000000000068301",
+    "cytometer": "FACSymphonyA1",
+    "date": "17-APR-2023",
+    "parameters": [
+      {
+        "index": 1,
+        "name": "FSC-A",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 2
+      },
+      {
+        "index": 2,
+        "name": "FSC-H",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      },
+      {
+        "index": 3,
+        "name": "FSC-W",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      },
+      {
+        "index": 4,
+        "name": "SSC-A",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 2
+      },
+      {
+        "index": 5,
+        "name": "SSC-H",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      },
+      {
+        "index": 6,
+        "name": "SSC-W",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      },
+      {
+        "index": 7,
+        "name": "PI-A",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 10
+      },
+      {
+        "index": 8,
+        "name": "PI-H",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 8
+      },
+      {
+        "index": 9,
+        "name": "PI-W",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 8
+      },
+      {
+        "index": 10,
+        "name": "Alexa Fluor 488-A",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 2
+      },
+      {
+        "index": 11,
+        "name": "Alexa Fluor 488-H",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      },
+      {
+        "index": 12,
+        "name": "Alexa Fluor 488-W",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      },
+      {
+        "index": 13,
+        "name": "Time",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      }
+    ],
+    "best_candidate": {
+      "index": 7,
+      "name": "PI-A",
+      "stain": "",
+      "bit_width": "32",
+      "range": "262144",
+      "amplifier": "0,0",
+      "candidate_score": 10
+    }
+  },
+  {
+    "file": "Specimen_001_AX_0_005.fcs",
+    "path": "data/raw/zenodo/14928071/Specimen_001_AX_0_005.fcs",
+    "header": {
+      "version": "FCS3.0",
+      "text_start": 256,
+      "text_end": 2357,
+      "data_start": 2363,
+      "data_end": 2834906,
+      "analysis_start": 0,
+      "analysis_end": 0
+    },
+    "events": "0000000000000054472",
+    "cytometer": "FACSymphonyA1",
+    "date": "17-APR-2023",
+    "parameters": [
+      {
+        "index": 1,
+        "name": "FSC-A",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 2
+      },
+      {
+        "index": 2,
+        "name": "FSC-H",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      },
+      {
+        "index": 3,
+        "name": "FSC-W",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      },
+      {
+        "index": 4,
+        "name": "SSC-A",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 2
+      },
+      {
+        "index": 5,
+        "name": "SSC-H",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      },
+      {
+        "index": 6,
+        "name": "SSC-W",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      },
+      {
+        "index": 7,
+        "name": "PI-A",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 10
+      },
+      {
+        "index": 8,
+        "name": "PI-H",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 8
+      },
+      {
+        "index": 9,
+        "name": "PI-W",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 8
+      },
+      {
+        "index": 10,
+        "name": "Alexa Fluor 488-A",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 2
+      },
+      {
+        "index": 11,
+        "name": "Alexa Fluor 488-H",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      },
+      {
+        "index": 12,
+        "name": "Alexa Fluor 488-W",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      },
+      {
+        "index": 13,
+        "name": "Time",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      }
+    ],
+    "best_candidate": {
+      "index": 7,
+      "name": "PI-A",
+      "stain": "",
+      "bit_width": "32",
+      "range": "262144",
+      "amplifier": "0,0",
+      "candidate_score": 10
+    }
+  },
+  {
+    "file": "Specimen_001_AX_24_006.fcs",
+    "path": "data/raw/zenodo/14928071/Specimen_001_AX_24_006.fcs",
+    "header": {
+      "version": "FCS3.0",
+      "text_start": 256,
+      "text_end": 2357,
+      "data_start": 2363,
+      "data_end": 2826222,
+      "analysis_start": 0,
+      "analysis_end": 0
+    },
+    "events": "0000000000000054305",
+    "cytometer": "FACSymphonyA1",
+    "date": "17-APR-2023",
+    "parameters": [
+      {
+        "index": 1,
+        "name": "FSC-A",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 2
+      },
+      {
+        "index": 2,
+        "name": "FSC-H",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      },
+      {
+        "index": 3,
+        "name": "FSC-W",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      },
+      {
+        "index": 4,
+        "name": "SSC-A",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 2
+      },
+      {
+        "index": 5,
+        "name": "SSC-H",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      },
+      {
+        "index": 6,
+        "name": "SSC-W",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      },
+      {
+        "index": 7,
+        "name": "PI-A",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 10
+      },
+      {
+        "index": 8,
+        "name": "PI-H",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 8
+      },
+      {
+        "index": 9,
+        "name": "PI-W",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 8
+      },
+      {
+        "index": 10,
+        "name": "Alexa Fluor 488-A",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 2
+      },
+      {
+        "index": 11,
+        "name": "Alexa Fluor 488-H",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      },
+      {
+        "index": 12,
+        "name": "Alexa Fluor 488-W",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      },
+      {
+        "index": 13,
+        "name": "Time",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      }
+    ],
+    "best_candidate": {
+      "index": 7,
+      "name": "PI-A",
+      "stain": "",
+      "bit_width": "32",
+      "range": "262144",
+      "amplifier": "0,0",
+      "candidate_score": 10
+    }
+  },
+  {
+    "file": "Specimen_001_AX_48_007.fcs",
+    "path": "data/raw/zenodo/14928071/Specimen_001_AX_48_007.fcs",
+    "header": {
+      "version": "FCS3.0",
+      "text_start": 256,
+      "text_end": 2359,
+      "data_start": 2365,
+      "data_end": 2810208,
+      "analysis_start": 0,
+      "analysis_end": 0
+    },
+    "events": "0000000000000053997",
+    "cytometer": "FACSymphonyA1",
+    "date": "17-APR-2023",
+    "parameters": [
+      {
+        "index": 1,
+        "name": "FSC-A",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 2
+      },
+      {
+        "index": 2,
+        "name": "FSC-H",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      },
+      {
+        "index": 3,
+        "name": "FSC-W",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      },
+      {
+        "index": 4,
+        "name": "SSC-A",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 2
+      },
+      {
+        "index": 5,
+        "name": "SSC-H",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      },
+      {
+        "index": 6,
+        "name": "SSC-W",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      },
+      {
+        "index": 7,
+        "name": "PI-A",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 10
+      },
+      {
+        "index": 8,
+        "name": "PI-H",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 8
+      },
+      {
+        "index": 9,
+        "name": "PI-W",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 8
+      },
+      {
+        "index": 10,
+        "name": "Alexa Fluor 488-A",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 2
+      },
+      {
+        "index": 11,
+        "name": "Alexa Fluor 488-H",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      },
+      {
+        "index": 12,
+        "name": "Alexa Fluor 488-W",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      },
+      {
+        "index": 13,
+        "name": "Time",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      }
+    ],
+    "best_candidate": {
+      "index": 7,
+      "name": "PI-A",
+      "stain": "",
+      "bit_width": "32",
+      "range": "262144",
+      "amplifier": "0,0",
+      "candidate_score": 10
+    }
+  },
+  {
+    "file": "Specimen_001_AX_72_008.fcs",
+    "path": "data/raw/zenodo/14928071/Specimen_001_AX_72_008.fcs",
+    "header": {
+      "version": "FCS3.0",
+      "text_start": 256,
+      "text_end": 2357,
+      "data_start": 2363,
+      "data_end": 2841874,
+      "analysis_start": 0,
+      "analysis_end": 0
+    },
+    "events": "0000000000000054606",
+    "cytometer": "FACSymphonyA1",
+    "date": "17-APR-2023",
+    "parameters": [
+      {
+        "index": 1,
+        "name": "FSC-A",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 2
+      },
+      {
+        "index": 2,
+        "name": "FSC-H",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      },
+      {
+        "index": 3,
+        "name": "FSC-W",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      },
+      {
+        "index": 4,
+        "name": "SSC-A",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 2
+      },
+      {
+        "index": 5,
+        "name": "SSC-H",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      },
+      {
+        "index": 6,
+        "name": "SSC-W",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      },
+      {
+        "index": 7,
+        "name": "PI-A",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 10
+      },
+      {
+        "index": 8,
+        "name": "PI-H",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 8
+      },
+      {
+        "index": 9,
+        "name": "PI-W",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 8
+      },
+      {
+        "index": 10,
+        "name": "Alexa Fluor 488-A",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 2
+      },
+      {
+        "index": 11,
+        "name": "Alexa Fluor 488-H",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      },
+      {
+        "index": 12,
+        "name": "Alexa Fluor 488-W",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      },
+      {
+        "index": 13,
+        "name": "Time",
+        "stain": "",
+        "bit_width": "32",
+        "range": "262144",
+        "amplifier": "0,0",
+        "candidate_score": 0
+      }
+    ],
+    "best_candidate": {
+      "index": 7,
+      "name": "PI-A",
+      "stain": "",
+      "bit_width": "32",
+      "range": "262144",
+      "amplifier": "0,0",
+      "candidate_score": 10
+    }
+  }
+]
