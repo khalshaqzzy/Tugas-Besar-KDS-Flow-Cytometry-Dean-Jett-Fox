@@ -59,6 +59,14 @@ const fitResponse: FitResponse = {
     background: [0, 0, 0],
   },
   warnings: ['Reduced chi-square tinggi; residual berbobot masih besar.'],
+  quality_flags: [
+    {
+      key: 'high-reduced-chi-square',
+      severity: 'warning',
+      label: 'High reduced chi-square',
+      message: 'Weighted residuals remain large; review the residual chart before interpreting phase estimates.',
+    },
+  ],
 }
 
 function jsonResponse(payload: unknown, status = 200) {
@@ -93,22 +101,34 @@ describe('App', () => {
     render(<App />)
 
     expect(await screen.findByText('Backend online')).toBeInTheDocument()
+    expect(screen.getByText('Data source')).toBeInTheDocument()
+    expect(screen.getAllByText('Parameter strategy').length).toBeGreaterThan(0)
     expect(screen.getAllByText('Zenodo 14928071 AI 0h PI-A').length).toBeGreaterThan(0)
+    expect(screen.getByText(/Dataset ini berasal dari kondisi AI pada waktu 0 jam/)).toBeInTheDocument()
 
-    await user.click(screen.getByRole('button', { name: /run fit/i }))
+    await user.click(screen.getByRole('button', { name: /fit dataset/i }))
 
     expect(await screen.findByText('60%')).toBeInTheDocument()
+    expect(screen.getByText('Analisis fitting')).toBeInTheDocument()
+    expect(screen.getByText('Gunakan dengan hati-hati')).toBeInTheDocument()
+    expect(screen.getByText(/Fitting terakhir menggunakan Zenodo 14928071 AI 0h PI-A/)).toBeInTheDocument()
+    expect(screen.getAllByText(/Residual absolut terbesar muncul di sekitar bin 20/).length).toBeGreaterThan(0)
     expect(screen.getByText(/Reduced chi-square tinggi/)).toBeInTheDocument()
   })
 
-  it('switches source mode to CSV upload', async () => {
+  it('switches source mode to CSV upload and previews sample rows', async () => {
     const user = userEvent.setup()
     render(<App />)
 
     await screen.findByText('Backend online')
     await user.click(screen.getByRole('button', { name: /csv upload/i }))
-
     expect(screen.getByText('Choose histogram CSV')).toBeInTheDocument()
+    await user.upload(screen.getByLabelText('Upload histogram CSV'), new File(['bin,count\n1,2\n2,3\n3,4\n'], 'histogram.csv', { type: 'text/csv' }))
+
+    await waitFor(() => expect(screen.getAllByText('histogram.csv').length).toBeGreaterThan(0))
+    expect(await screen.findByText('3 rows')).toBeInTheDocument()
+    expect(screen.getByRole('columnheader', { name: 'Bin' })).toBeInTheDocument()
+    expect(screen.getByRole('columnheader', { name: 'Count' })).toBeInTheDocument()
   })
 
   it('blocks running when manual parameter order is invalid', async () => {
@@ -116,13 +136,14 @@ describe('App', () => {
     render(<App />)
 
     await screen.findByText('Backend online')
-    await user.click(screen.getByLabelText('Manual mode'))
+    expect(screen.getByLabelText('G1 mean value')).toBeDisabled()
+    await user.click(screen.getByRole('button', { name: /manual initial means/i }))
     await user.clear(screen.getByLabelText('G1 mean value'))
     await user.type(screen.getByLabelText('G1 mean value'), '50')
     await user.clear(screen.getByLabelText('G2/M mean value'))
     await user.type(screen.getByLabelText('G2/M mean value'), '25')
 
     expect(screen.getByText(/G2\/M mean harus lebih besar/)).toBeInTheDocument()
-    await waitFor(() => expect(screen.getByRole('button', { name: /run fit/i })).toBeDisabled())
+    await waitFor(() => expect(screen.getByRole('button', { name: /fit dataset/i })).toBeDisabled())
   })
 })

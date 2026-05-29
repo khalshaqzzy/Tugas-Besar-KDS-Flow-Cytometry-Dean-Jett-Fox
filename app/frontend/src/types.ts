@@ -69,6 +69,13 @@ export type FitSeries = {
   background: number[]
 }
 
+export type QualityFlag = {
+  key: string
+  severity: 'info' | 'caution' | 'warning'
+  label: string
+  message: string
+}
+
 export type FitResponse = {
   fit_id: string
   model_info: {
@@ -84,9 +91,12 @@ export type FitResponse = {
   parameters: FitParameters
   series: FitSeries
   warnings: string[]
+  quality_flags: QualityFlag[]
 }
 
 export type SourceMode = 'demo' | 'upload'
+
+export type ParameterMode = 'auto' | 'manual'
 
 export type VisibleSeries = {
   observed: boolean

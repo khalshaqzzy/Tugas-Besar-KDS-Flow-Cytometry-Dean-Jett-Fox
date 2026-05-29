@@ -9,6 +9,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.backend.csv_histograms import parse_histogram_csv
 from app.backend.datasets import DatasetNotFoundError, get_histogram_by_id, list_dataset_summaries
+from app.backend.quality import build_quality_flags
 from app.backend.schemas import DatasetsResponse, FitRequest, FitResponse, HealthResponse
 from models.dean_jett_fox import fit_dean_jett_fox
 
@@ -68,7 +69,11 @@ def _fit_histogram(
     try:
         result = fit_dean_jett_fox(bins, counts, initial_parameters=scaled_initial)
     except ValueError as exc:
-        raise HTTPException(status_code=400, detail=str(exc)) from exc
+        detail = str(exc)
+        if "broadcast" in detail:
+            detail = "fitting gagal karena ukuran komponen model tidak konsisten dengan histogram; gunakan CSV yang valid atau parameter awal yang lebih wajar"
+        raise HTTPException(status_code=400, detail=detail) from exc
+    result["quality_flags"] = build_quality_flags(result)
     return FitResponse(fit_id=fit_id, **result)
 
 

@@ -82,7 +82,9 @@ def _broaden_component(x: np.ndarray, component: np.ndarray, sigma: float) -> np
     offsets = np.arange(-radius, radius + 1, dtype=float)
     kernel = np.exp(-0.5 * (offsets / sigma_bins) ** 2)
     kernel = kernel / kernel.sum()
-    broadened = np.convolve(component, kernel, mode="same")
+    broadened_full = np.convolve(component, kernel, mode="full")
+    start = max((broadened_full.size - component.size) // 2, 0)
+    broadened = broadened_full[start : start + component.size]
     before = float(np.trapezoid(component, x))
     after = float(np.trapezoid(broadened, x))
     if before > 0 and after > 0:

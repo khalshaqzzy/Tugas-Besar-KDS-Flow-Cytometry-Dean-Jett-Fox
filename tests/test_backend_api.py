@@ -11,6 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from app.backend.main import _scale_initial_parameters, app
+from app.backend.quality import build_quality_flags
 
 
 client = TestClient(app)
@@ -60,6 +61,8 @@ def test_fit_with_demo_dataset_returns_model_response() -> None:
     assert payload["model_info"]["name"] == "dean-jett-fox"
     assert sum(payload["phase_percentages"].values()) == pytest.approx(100.0, abs=1e-6)
     assert isinstance(payload["warnings"], list)
+    assert isinstance(payload["quality_flags"], list)
+    assert payload["quality_flags"]
     assert len(payload["series"]["bins"]) == 256
     assert len(payload["series"]["observed"]) == 256
     assert len(payload["series"]["fit_total"]) == 256
@@ -115,10 +118,10 @@ def test_fit_with_unknown_dataset_id_returns_404() -> None:
     assert "dataset_id tidak ditemukan" in response.json()["detail"]
 
 
-def make_csv(include_header: bool = True) -> str:
+def make_csv(include_header: bool = True, row_count: int = 80) -> str:
     rows = ["bin,count"] if include_header else []
-    for index in range(80):
-        x = index / 79
+    for index in range(row_count):
+        x = index / (row_count - 1)
         g1 = 900.0 * math_exp(-0.5 * ((x - 0.32) / 0.055) ** 2)
         s = 220.0 if 0.32 <= x <= 0.64 else 0.0
         g2 = 320.0 * math_exp(-0.5 * ((x - 0.64) / 0.070) ** 2)
@@ -141,6 +144,7 @@ def test_fit_csv_accepts_header_csv_upload() -> None:
     assert response.status_code == 200
     payload = response.json()
     assert payload["fit_id"] == "uploaded-csv-default"
+    assert isinstance(payload["quality_flags"], list)
     assert sum(payload["phase_percentages"].values()) == pytest.approx(100.0, abs=1e-6)
     assert len(payload["series"]["bins"]) == 80
 
@@ -156,6 +160,18 @@ def test_fit_csv_accepts_no_header_csv_and_manual_parameters() -> None:
     payload = response.json()
     assert payload["parameters"]["g2_mean"] > payload["parameters"]["g1_mean"]
     assert len(payload["series"]["observed"]) == 80
+
+
+def test_fit_csv_short_histogram_does_not_leak_numpy_broadcast_error() -> None:
+    response = client.post(
+        "/fit/csv",
+        data={"g1_mean": "20", "g2_mean": "41"},
+        files={"file": ("histogram.csv", make_csv(row_count=64).encode("utf-8"), "text/csv")},
+    )
+
+    assert "broadcast" not in response.text
+    assert response.status_code == 200
+    assert len(response.json()["series"]["bins"]) == 64
 
 
 @pytest.mark.parametrize(
@@ -176,3 +192,41 @@ def test_fit_csv_rejects_invalid_uploads(filename: str, content: bytes, match: s
 
     assert response.status_code == 400
     assert match in response.json()["detail"]
+
+
+def test_quality_flags_detect_metric_and_parameter_cautions() -> None:
+    flags = build_quality_flags(
+        {
+            "fit_metrics": {"r_squared": 0.72, "reduced_chi_square": 31.0},
+            "parameters": {"g2_g1_ratio": 1.3, "debris_percent_of_total_signal": 24.0},
+            "warnings": ["Mean G1 berada dekat batas constraint."],
+        }
+    )
+
+    keys = {flag["key"] for flag in flags}
+    assert {
+        "low-r-squared",
+        "high-reduced-chi-square",
+        "g2-g1-ratio-out-of-range",
+        "high-debris",
+        "constraint-boundary",
+    } <= keys
+
+
+def test_quality_flags_add_info_when_no_thresholds_are_crossed() -> None:
+    flags = build_quality_flags(
+        {
+            "fit_metrics": {"r_squared": 0.92, "reduced_chi_square": 4.0},
+            "parameters": {"g2_g1_ratio": 2.0, "debris_percent_of_total_signal": 3.0},
+            "warnings": [],
+        }
+    )
+
+    assert flags == [
+        {
+            "key": "fit-review",
+            "severity": "info",
+            "label": "Tidak ada flag kualitas besar",
+            "message": "Metrik utama tidak melewati ambang kehati-hatian yang dikonfigurasi.",
+        }
+    ]

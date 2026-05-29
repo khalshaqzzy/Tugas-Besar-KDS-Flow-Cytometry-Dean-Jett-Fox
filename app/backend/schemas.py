@@ -44,6 +44,13 @@ class FitRequest(BaseModel):
     initial_parameters: InitialParameters | None = None
 
 
+class QualityFlag(BaseModel):
+    key: str
+    severity: str
+    label: str
+    message: str
+
+
 class FitResponse(BaseModel):
     fit_id: str
     model_info: dict[str, Any]
@@ -52,3 +59,4 @@ class FitResponse(BaseModel):
     parameters: dict[str, Any]
     series: dict[str, list[float]]
     warnings: list[str]
+    quality_flags: list[QualityFlag]
