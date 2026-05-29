@@ -5,3 +5,7 @@ matplotlib
 pytest
 nbclient
 nbformat
+fastapi
+pydantic
+uvicorn
+httpx

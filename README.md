@@ -21,7 +21,7 @@ Dataset utama adalah Zenodo 14928071:
 
 FlowRepository FR-FCM-ZZMY hanya dicatat sebagai dataset sekunder/cadangan karena download raw file membutuhkan login.
 
-## Phase 1-3
+## Phase 1-4
 
 Jalankan dari root repo:
 
@@ -45,17 +45,39 @@ from models.dean_jett_fox import fit_dean_jett_fox
 
 Model default adalah `djf_polynomial_broadened_v2`: G1 dan G2/M sebagai Gaussian berbasis area, S phase sebagai polynomial orde dua dengan broadening, serta komponen debris/background sederhana.
 
+Backend FastAPI:
+
+```powershell
+uvicorn app.backend.main:app --reload
+```
+
+Endpoint lokal:
+
+- `http://127.0.0.1:8000/health`
+- `http://127.0.0.1:8000/datasets`
+- `POST http://127.0.0.1:8000/fit`
+
+Contoh request fitting dataset demo:
+
+```json
+{
+  "dataset_id": "zenodo-14928071-ai-0"
+}
+```
+
 Validasi:
 
 ```powershell
 pytest
 ```
 
-Output fase 1-3 tersimpan di:
+Output fase 1-4 tersimpan di:
 
 - `data/metadata/dataset_sources.md`
 - `data/raw/zenodo/14928071/`
 - `data/processed/zenodo_14928071_histograms/`
 - `data/processed/zenodo_14928071_djf_fit_summary.csv`
 - `models/dean_jett_fox.py`
+- `app/backend/`
 - `tests/test_dean_jett_fox.py`
+- `tests/test_backend_api.py`
