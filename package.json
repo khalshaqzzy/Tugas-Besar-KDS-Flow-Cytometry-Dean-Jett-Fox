@@ -1,0 +1,17 @@
+{
+  "name": "djf-flow-cytometry-lab",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "postinstall": "uv venv .venv && uv pip install -r requirements.txt && npm --prefix app/frontend install",
+    "dev": "concurrently -n backend,frontend -c teal,cyan \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "uv run --with-requirements requirements.txt uvicorn app.backend.main:app --host 127.0.0.1 --port 8000 --reload",
+    "dev:frontend": "npm --prefix app/frontend run dev -- --host 127.0.0.1 --port 5173",
+    "test": "npm run test:backend && npm run test:frontend",
+    "test:backend": "uv run --with-requirements requirements.txt pytest -q",
+    "test:frontend": "npm --prefix app/frontend run test"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
